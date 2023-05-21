@@ -1,7 +1,9 @@
 .Header {
   width: 100%;
-  background-color: blue;
-  height: 75px;
+  // background-color: blue;
+  background-color: white;
+  min-height: 75px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  align-items: center;
 }

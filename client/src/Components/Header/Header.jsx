@@ -7,7 +7,9 @@ import ForumIcon from "@mui/icons-material/Forum";
 const Header = () => {
   return (
     <div className={classes.Header}>
-      <PersonIcon fontSize="large" backgroundColor="white" />
+      <PersonIcon fontSize="large" sx={{ color: "#424242" }} />
+      <LocalFireDepartmentIcon fontSize="large" sx={{ color: "#424242" }} />
+      <ForumIcon fontSize="large" sx={{ color: "#424242" }} />
     </div>
   );
 };

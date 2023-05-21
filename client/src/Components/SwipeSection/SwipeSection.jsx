@@ -1,4 +1,3 @@
-import React from "react";
 import classes from "./SwipeSection.module.scss";
 import Header from "../Header/Header";
 import CardsSection from "../CardsSection/CardsSection";

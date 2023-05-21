@@ -1,5 +1,11 @@
 .CardsSection {
-  height: 350px;
-  width: 95%;
-  background-color: red;
+  min-height: 350px;
+  width: 85%;
+  background-color: white;
+
+  .Image {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+  }
 }

@@ -1,0 +1,47 @@
+{
+  "hash": "f1bb7929",
+  "browserHash": "4a0318f7",
+  "optimized": {
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "f2512c02",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "09d20fee",
+      "needsInterop": true
+    },
+    "@mui/icons-material/Person": {
+      "src": "../../node_modules/@mui/icons-material/Person.js",
+      "file": "@mui_icons-material_Person.js",
+      "fileHash": "83e423bf",
+      "needsInterop": true
+    },
+    "@mui/icons-material/LocalFireDepartment": {
+      "src": "../../node_modules/@mui/icons-material/LocalFireDepartment.js",
+      "file": "@mui_icons-material_LocalFireDepartment.js",
+      "fileHash": "89d833d3",
+      "needsInterop": true
+    },
+    "@mui/icons-material/Forum": {
+      "src": "../../node_modules/@mui/icons-material/Forum.js",
+      "file": "@mui_icons-material_Forum.js",
+      "fileHash": "d6488b47",
+      "needsInterop": true
+    }
+  },
+  "chunks": {
+    "chunk-3VMTLOXU": {
+      "file": "chunk-3VMTLOXU.js"
+    },
+    "chunk-JVFU7BZX": {
+      "file": "chunk-JVFU7BZX.js"
+    },
+    "chunk-HS7GO4I2": {
+      "file": "chunk-HS7GO4I2.js"
+    }
+  }
+}
