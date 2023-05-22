@@ -13,7 +13,7 @@ export const Footer = () => {
         <ReplayIcon fontSize="large" sx={{ color: "#FFA500" }} />
       </div>
       <div className={classes.IconContainer}>
-        <CloseIcon fontSize="large" sx={{ color: "#FFCCCB" }} />
+        <CloseIcon fontSize="large" sx={{ color: "#FFCCCC" }} />
       </div>
       <div className={classes.IconContainer}>
         <StarIcon fontSize="large" sx={{ color: "#35BAF6" }} />
