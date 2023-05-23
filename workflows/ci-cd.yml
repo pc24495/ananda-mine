@@ -1,0 +1,57 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Amazon Linux
+        uses: actions/setup-python@v2
+        with:
+          platform: 'amazonlinux-2-x64'
+
+      - name: Switch to master branch
+        run: git checkout master
+
+      - name: Pull from main branch
+        run: git pull origin main
+
+      - name: Change directory to client
+        run: cd client
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build React project
+        run: npm run build
+In this modified configuration:
+
+The workflow is triggered only on pushes to the main branch.
+
+After checking out the code, it sets up the Amazon Linux environment using the actions/setup-python action, specifying amazonlinux-2-x64 as the platform.
+
+It switches to the master branch and pulls the latest changes from the main branch.
+
+It changes the directory to the client folder.
+
+It installs the project dependencies using npm install.
+
+Finally, it builds the React project using npm run build.
+
+Ensure that your project's directory structure matches the steps mentioned in the workflow. Adjust the commands as needed based on your project's setup and specific requirements.
+
+Commit and push this modified workflow file to your GitHub repository. When you push changes to the main branch, the workflow will be triggered, and the defined steps will be executed on an Amazon Linux environment, including pulling changes, installing dependencies, and building the React project.
+
+
+
+
+
+
