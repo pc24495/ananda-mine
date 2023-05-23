@@ -18,20 +18,22 @@ jobs:
         with:
           platform: 'amazonlinux-2-x64'
 
+      - name: Fetch all branches
+        run: git fetch --all
+
       - name: Switch to master branch
         run: git checkout master
 
-      - name: Pull from main branch
-        run: git pull origin main
-
-      - name: Change directory to client
-        run: cd client
+      - name: Merge main into master
+        run: git merge origin/main
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
+        working-directory: client
 
       - name: Build React project
         run: npm run build
+        working-directory: client
 In this modified configuration:
 
 The workflow is triggered only on pushes to the main branch.
