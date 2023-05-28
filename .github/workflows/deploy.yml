@@ -44,6 +44,7 @@ jobs:
           npm run build
 
       - name: Move build to correct folder
+        working-directory: ./client
         run: |
           sudo rm -rf /var/www/ananda-mine
           sudo mv ./client/build /var/www/ananda-mine
