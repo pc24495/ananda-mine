@@ -44,7 +44,6 @@ jobs:
           npm run build
 
       - name: Remove old build
-        working-directory: ./client
         run: |
           sudo rm -rf /var/www/ananda-mine
 
