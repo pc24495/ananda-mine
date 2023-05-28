@@ -22,12 +22,27 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-          cache: "npm"
+
+      - name: Get npm cache directory
+        id: npm-cache
+        working-directory: ./client
+        run: |
+          echo "::set-output name=dir::$(npm config get cache)"
+
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.npm-cache.outputs.dir }}
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install dependencies and build
         working-directory: ./client
         run: |
           npm install --legacy-peer-deps
           npm run build
+
       - name: Move build to correct folder
         run: |
           sudo rm -rf /var/www/ananda-mine
