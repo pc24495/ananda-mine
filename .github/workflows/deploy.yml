@@ -50,4 +50,5 @@ jobs:
 
       - name: Move build to correct folder
         run: |
+          mkdir /var/www/ananda-mine
           sudo mv ./client/build /var/www/ananda-mine
