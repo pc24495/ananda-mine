@@ -24,10 +24,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
       - name: Install dependencies and build
-      working-directory: ./client
-      run: |
-        npm install --legacy-peer-deps
-        npm run build
+        working-directory: ./client
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
 
       - name: Move build to correct folder
         run: |
