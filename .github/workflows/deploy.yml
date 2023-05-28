@@ -43,12 +43,12 @@ jobs:
           npm install --legacy-peer-deps
           npm run build
 
-      - name: Move build to correct folder
+      - name: Remove old build
         working-directory: ./client
         run: |
           sudo rm -rf /var/www/ananda-mine
 
       - name: Move build to correct folder
         run: |
-          mkdir /var/www/ananda-mine
+          sudo mkdir /var/www/ananda-mine
           sudo mv ./client/build /var/www/ananda-mine
