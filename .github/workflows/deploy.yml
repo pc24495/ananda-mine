@@ -47,4 +47,7 @@ jobs:
         working-directory: ./client
         run: |
           sudo rm -rf /var/www/ananda-mine
+
+      - name: Move build to correct folder
+        run: |
           sudo mv ./client/build /var/www/ananda-mine
