@@ -17,10 +17,9 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-        working-directory: ./client
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
@@ -29,7 +28,6 @@ jobs:
         run: |
           npm install --legacy-peer-deps
           npm run build
-
       - name: Move build to correct folder
         run: |
           sudo rm -rf /var/www/ananda-mine
