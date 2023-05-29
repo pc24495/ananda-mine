@@ -25,4 +25,4 @@ jobs:
       with:
         node-version: 16
     - run: cd client && npm install --legacy-peer-deps
-    - run: npm cd client && run build --if-present
+    - run: cd client && npm run build --if-present
