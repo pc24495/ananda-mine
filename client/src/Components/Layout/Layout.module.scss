@@ -8,4 +8,37 @@
   padding-top: 50px;
   justify-content: center;
   box-sizing: border-box;
+
+  .FormBox {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .FormBox2 {
+    flex: 1;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100px;
+  }
+
+  .inputField {
+    padding: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .error {
+    border: 1px solid red;
+  }
+
+  .errorMessage {
+    color: red;
+    margin-top: 4px;
+  }
 }

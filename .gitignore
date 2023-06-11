@@ -128,3 +128,52 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+anandamine-server/HELP.md
+anandamine-server/target/
+!anandamine-server/.mvn/wrapper/maven-wrapper.jar
+!anandamine-server/**/src/main/**/target/
+!anandamine-server/**/src/test/**/target/
+
+### STS ###
+anandamine-server/.apt_generated
+anandamine-server/.classpath
+anandamine-server/.factorypath
+anandamine-server/.project
+anandamine-server/.settings
+anandamine-server/.springBeans
+anandamine-server/.sts4-cache
+
+### IntelliJ IDEA ###
+anandamine-server/.idea
+anandamine-server/*.iws
+anandamine-server/*.iml
+anandamine-server/*.ipr
+anandamine-server/.run
+
+### NetBeans ###
+anandamine-server/nbproject/private/
+anandamine-server/nbbuild/
+anandamine-server/dist/
+anandamine-server/nbdist/
+anandamine-server/.nb-gradle/
+anandamine-server/build/
+!anandamine-server/**/src/main/**/build/
+!anandamine-server/**/src/test/**/build/
+
+### VS Code ###
+anandamine-server/.vscode/
+
+
+### NetBeans ###
+anandamine-server/nbproject/private/
+anandamine-server/nbbuild/
+anandamine-server/dist/
+anandamine-server/nbdist/
+anandamine-server/.nb-gradle/
+anandamine-server/build/
+!**/src/main/anandamine-server/**/build/
+!**/src/test/anandamine-server/**/build/
+
+### VS Code ###
+anandamine-server/.vscode/
