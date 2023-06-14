@@ -3,8 +3,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import javax.validation.constraints.Size;
-//import jakarta.validation.constraints.Size;
+//import javax.validation.constraints.Size;
+import jakarta.validation.constraints.Size;
 
 @Entity
 public class AppUser {
