@@ -15,6 +15,7 @@ public class AppUserController {
 
     @PostMapping("/add")
     public String add(@RequestBody AppUser appUser) {
+        System.out.println(appUser.getName());
         appUserService.saveAppUser(appUser);
         return "New user is added";
     }
