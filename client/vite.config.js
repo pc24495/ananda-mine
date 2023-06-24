@@ -19,6 +19,7 @@ export default defineConfig(({ mode }) => {
               : "http://localhost:8080", // Replace with your API endpoint
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, ""),
+          secure: false,
         },
       },
     },
