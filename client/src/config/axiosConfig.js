@@ -1,9 +1,9 @@
 import axios from "axios";
 
-// console.log(
-//   "import.meta.env.VITE_REACT_APP_PROD",
-//   import.meta.env.VITE_REACT_APP_PROD
-// );
+console.log(
+  "import.meta.env.VITE_REACT_APP_PROD",
+  import.meta.env.VITE_REACT_APP_PROD
+);
 
 const instance = axios.create({
   baseURL:
