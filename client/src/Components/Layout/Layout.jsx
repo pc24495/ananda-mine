@@ -26,7 +26,7 @@ const Layout = () => {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5173/api/appuser/add", {
+      await axios.post("/appuser/add", {
         name: data.inputField,
       });
       console.log("Data sent to the backend:", data);
