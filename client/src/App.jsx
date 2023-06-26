@@ -4,6 +4,7 @@ import Layout from "./Components/Layout/Layout";
 
 function App() {
   // dotenv.config();
+  console.log(import.meta.env.VITE_REACT_APP_PROD);
   return (
     <>
       <Layout />
