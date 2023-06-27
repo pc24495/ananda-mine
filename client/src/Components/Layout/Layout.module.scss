@@ -42,3 +42,21 @@
     margin-top: 4px;
   }
 }
+
+@media (max-width: 768px) {
+  .Layout {
+    flex-direction: column-reverse;
+    height: auto;
+    align-items: center;
+    padding-top: 20px;
+
+    .FormBox {
+      margin-top: 20px;
+      margin-bottom: 30px;
+    }
+
+    .FormBox2 {
+      display: none;
+    }
+  }
+}

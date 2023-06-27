@@ -9,7 +9,7 @@ const Header = () => {
       Bla14
       <PersonIcon fontSize="large" sx={{ color: "#FF00FF" }} />
       <LocalFireDepartmentIcon fontSize="large" sx={{ color: "#424242" }} />
-      <ForumIcon fontSize="large" sx={{ color: "#424242" }} />
+      <ForumIcon fontSize="medium" sx={{ color: "#424242" }} />
     </div>
   );
 };
