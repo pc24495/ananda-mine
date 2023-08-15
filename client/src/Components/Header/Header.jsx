@@ -8,7 +8,7 @@ const Header = () => {
     <div className={classes.Header}>
       <PersonIcon fontSize="large" sx={{ color: "#424242" }} />
       <LocalFireDepartmentIcon fontSize="large" sx={{ color: "#424242" }} />
-      <ForumIcon fontSize="medium" sx={{ color: "#424242" }} />
+      <ForumIcon fontSize="large" sx={{ color: "#424242" }} />
     </div>
   );
 };
