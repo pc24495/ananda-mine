@@ -1,0 +1,15 @@
+.Login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //   background-color: red;
+  background-image: url("DoctorOnPhone.jpeg"); /* Replace with the path to your image */
+  background-size: cover; /* Cover the entire div */
+  background-position: center; /* Keep the image centered */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  //   width: 100%; /* Full width */
+  //   height: 300px; /* Set a specific height or whatever height you need */
+  overflow: hidden; /* Ensure nothing spills outside the div */
+}
