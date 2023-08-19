@@ -30,6 +30,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    .LoginHeaderLogo {
+      margin-left: 2rem;
+      font-family: "Montserrat", sans-serif;
+      color: white;
+      font-weight: 600;
+      font-size: 1.5rem;
+    }
   }
 
   .Body {

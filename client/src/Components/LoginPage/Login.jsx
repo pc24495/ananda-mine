@@ -5,7 +5,10 @@ import classes from "./Login.module.scss";
 const Login = () => {
   return (
     <div className={classes.Login}>
-      <div className={classes.LoginHeader}></div>
+      <div className={classes.LoginHeader}>
+        <div className={classes.LoginHeaderLogo}>Anandamine</div>
+        <div className={classes.LoginButton}></div>
+      </div>
       <div className={classes.Body}>
         <div className={classes.InfoBox}>
           <h1 className={classes.FindYourHeartbeat}>Find Your Heartbeat</h1>
