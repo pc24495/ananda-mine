@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   //   background-color: red;
-  background-image: url("DoctorOnPhone.jpeg"); /* Replace with the path to your image */
+  background-image: url("/DoctorOnPhone.jpeg"); /* Replace with the path to your image */
   background-size: cover; /* Cover the entire div */
   background-position: center; /* Keep the image centered */
   background-repeat: no-repeat; /* Do not repeat the image */
@@ -27,6 +27,9 @@
       rgba(0, 0, 0, 0.5) 20%,
       black 100%
     );
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .Body {
