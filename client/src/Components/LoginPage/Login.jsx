@@ -13,11 +13,11 @@ const Login = () => {
         <div className={classes.InfoBox}>
           <h1 className={classes.FindYourHeartbeat}>Find Your Heartbeat</h1>
           <div className={classes.CreateAccountBox}>
-            <div className={classes.CreateAccountButton}>
+            <button className={classes.CreateAccountButton}>
               <div className={classes.CreateAccountStyling}>
                 <p>Create Account</p>
               </div>
-            </div>
+            </button>
           </div>
         </div>
       </div>
