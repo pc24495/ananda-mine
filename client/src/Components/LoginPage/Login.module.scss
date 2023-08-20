@@ -51,6 +51,10 @@
         cursor: pointer;
         outline: none;
         font-size: 2rem;
+
+        &:focus {
+          outline: none;
+        }
       }
 
       .CreateAccountHeader {
@@ -166,6 +170,10 @@
       &:hover::before {
         background-color: rgba(128, 128, 128, 0.2); // Gray tint overlay
       }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -205,6 +213,10 @@
           border-radius: 1.5rem;
           padding: 0;
           visibility: hidden;
+
+          &:focus {
+            outline: none;
+          }
 
           .CreateAccountStyling {
             width: 100%;
