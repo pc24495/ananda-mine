@@ -7,7 +7,7 @@ const Login = () => {
     <div className={classes.Login}>
       <div className={classes.LoginHeader}>
         <div className={classes.LoginHeaderLogo}>Anandamine</div>
-        <div className={classes.LoginButton}></div>
+        <button className={classes.LoginButton}>Log In</button>
       </div>
       <div className={classes.Body}>
         <div className={classes.InfoBox}>
@@ -15,7 +15,7 @@ const Login = () => {
           <div className={classes.CreateAccountBox}>
             <button className={classes.CreateAccountButton}>
               <div className={classes.CreateAccountStyling}>
-                <p>Testing Some Github</p>
+                <p>Create Account</p>
               </div>
             </button>
           </div>
