@@ -1,0 +1,20 @@
+.AppLayout {
+  width: 100vw;
+  height: 100vh;
+  background-color: red;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  .LeftSidebar {
+    width: 22rem;
+    height: 100%;
+    background-color: blue;
+  }
+
+  .MainContent {
+    width: calc(100vw - 22rem);
+    height: 100%;
+    background-color: green;
+  }
+}

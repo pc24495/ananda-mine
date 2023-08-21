@@ -1,5 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import classes from "./Login.module.scss";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../App.jsx";
+
 // import MainLoginBox from "./MainLoginBox/MainLoginBox.jsx";
 
 const Login = () => {
@@ -7,6 +10,10 @@ const Login = () => {
     loginBox: false,
     createBox: false,
   });
+
+  const navigate = useNavigate();
+
+  const { setIsAuthenticated } = useContext(AuthContext);
 
   const closeLoginCreateBox = () => {
     setLoginCreateBoxOpen({ loginBox: false, createBox: false });
@@ -20,6 +27,12 @@ const Login = () => {
   const openCreateBox = (event) => {
     event.preventDefault();
     setLoginCreateBoxOpen({ loginBox: false, createBox: true });
+  };
+
+  const moveToRecs = (event) => {
+    event.preventDefault();
+    setIsAuthenticated(true);
+    navigate("/app/recs");
   };
 
   return (
@@ -42,11 +55,12 @@ const Login = () => {
           <p className={classes.Terms}>
             By clicking login, you agree to our <span>terms.</span>
           </p>
-          <button className={classes.LoginButtonInBox}>
+          <button className={classes.LoginButtonInBox} onClick={moveToRecs}>
             Log in with Google (unavailable)
           </button>
           <button
             className={classes.LoginButtonInBox}
+            onClick={moveToRecs}
             style={{
               backgroundColor: "silver",
               border: "0.125rem solid black",
@@ -57,6 +71,7 @@ const Login = () => {
           </button>
           <button
             className={classes.LoginButtonInBox}
+            onClick={moveToRecs}
             style={{
               backgroundColor: "silver",
               border: "0.125rem solid black",

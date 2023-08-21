@@ -1,7 +1,10 @@
 import "./App.css";
 import PropTypes from "prop-types";
 // import Layout from "./Components/Layout/Layout";
+import AppLayout from "./Components/AppLayout/AppLayout";
 import Login from "./Components/LoginPage/Login.jsx";
+import Chat from "./Components/Chat/Chat.jsx";
+import Recs from "./Components/Recs/Recs.jsx";
 import { createContext, useContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -34,7 +37,14 @@ const ProtectedRoute = ({ children }) => {
     return <Navigate to="/" replace />;
   }
 
-  return children;
+  return (
+    <AppLayout>
+      <Routes>
+        <Route path="recs" element={<Recs />} />
+        <Route path="chat" element={<Chat />} />
+      </Routes>
+    </AppLayout>
+  );
 };
 
 const LoginRoute = ({ children }) => {
@@ -61,7 +71,7 @@ const AppInner = () => {
               </LoginRoute>
             }
           />
-          <Route path="/app/recs" element={<ProtectedRoute />} />
+          <Route path="/app/*" element={<ProtectedRoute />}></Route>
         </Routes>
       </Router>
     </>
