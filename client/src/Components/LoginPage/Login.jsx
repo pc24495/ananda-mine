@@ -51,7 +51,10 @@ const Login = () => {
             X
           </p>
           <img src="/pinkheart.svg" alt="Logo" />
-          <h3 className={classes.CreateAccountHeader}>Create Account</h3>
+          <h3 className={classes.CreateAccountHeader}>
+            {loginCreateBoxOpen.loginBox ? "Log In" : ""}
+            {loginCreateBoxOpen.createBox ? "Create Account" : ""}
+          </h3>
           <p className={classes.Terms}>
             By clicking login, you agree to our <span>terms.</span>
           </p>
