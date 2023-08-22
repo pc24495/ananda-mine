@@ -12,7 +12,8 @@ import { Navigate, useNavigate } from "react-router-dom";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  //Change back to false after testing (changeback***)
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
 
   // Authentication logic entirely here
   useEffect(() => {
@@ -42,6 +43,7 @@ const ProtectedRoute = ({ children }) => {
       <Routes>
         <Route path="recs" element={<Recs />} />
         <Route path="chat" element={<Chat />} />
+        <Route index element={<Chat />} />
       </Routes>
     </AppLayout>
   );

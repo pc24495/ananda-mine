@@ -3,18 +3,84 @@
   height: 100vh;
   background-color: red;
   display: flex;
+  flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
 
-  .LeftSidebar {
-    width: 22rem;
-    height: 100%;
-    background-color: blue;
+  .MainLayout {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+    .LeftSidebar {
+      width: 22rem;
+      height: 100%;
+      background-color: blue;
+    }
+
+    .MainContent {
+      width: calc(100vw - 22rem);
+      height: 100%;
+      background-color: green;
+    }
   }
 
-  .MainContent {
-    width: calc(100vw - 22rem);
-    height: 100%;
-    background-color: green;
+  .MobileFooter {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .AppLayout {
+    width: 100vw;
+    height: 100vh;
+    background-color: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+
+    .MainLayout {
+      width: 100%;
+      .LeftSidebar {
+        width: 22rem;
+        height: 100%;
+        background-color: blue;
+        display: none;
+      }
+
+      .MainContent {
+        width: 100%;
+        height: 100%;
+        background-color: green;
+      }
+    }
+
+    .MobileFooter {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: center;
+      font-size: 1.25rem;
+      height: 2.75rem;
+      width: 100%;
+      a {
+        text-decoration: none; /* Remove underline for links */
+        color: inherit; /* Inherit the text color from parent */
+
+        .Icon_1 {
+          font-size: 1.75rem;
+        }
+
+        .Icon_2 {
+          font-size: 2rem;
+        }
+
+        .activeNavLink {
+          color: green;
+        }
+      }
+    }
   }
 }
