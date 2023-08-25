@@ -7,13 +7,15 @@ import Chat from "./Components/Chat/Chat.jsx";
 import Recs from "./Components/Recs/Recs.jsx";
 import { createContext, useContext, useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { Provider as ReduxProvider } from "react-redux";
+import store from "../redux/store.js";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   //Change back to false after testing (changeback***)
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Authentication logic entirely here
   useEffect(() => {
@@ -30,7 +32,7 @@ const AuthProvider = ({ children }) => {
   );
 };
 
-const ProtectedRoute = ({ children }) => {
+const ProtectedRoute = () => {
   const { isAuthenticated } = useContext(AuthContext);
 
   if (!isAuthenticated) {
@@ -94,9 +96,11 @@ LoginRoute.propTypes = {
 
 const App = () => {
   return (
-    <AuthProvider>
-      <AppInner></AppInner>
-    </AuthProvider>
+    <ReduxProvider store={store}>
+      <AuthProvider>
+        <AppInner></AppInner>
+      </AuthProvider>
+    </ReduxProvider>
   );
 };
 

@@ -6,6 +6,7 @@ import react from "@vitejs/plugin-react-swc";
 // console.log(import.meta);
 
 export default defineConfig(({ mode }) => {
+  // eslint-disable-next-line no-undef
   const env = loadEnv(mode, process.cwd());
   console.log("Vite config env", env.VITE_REACT_APP_PROD);
   return {

@@ -7,6 +7,15 @@
   justify-content: flex-start;
   align-items: flex-start;
 
+  .LoadingScreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: magenta;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   .MainLayout {
     display: flex;
     flex-direction: row;
