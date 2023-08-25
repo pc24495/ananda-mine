@@ -4,26 +4,26 @@ import { AiFillHeart } from "react-icons/ai";
 import { IoSparkles } from "react-icons/io5";
 import { BsFillChatFill, BsFillPersonFill } from "react-icons/bs";
 import { NavLink, useLocation } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect } from "react";
-import { setAppLoading, setAppNotLoading } from "../../../redux/slice";
+import { useSelector } from "react-redux";
+// import { useEffect } from "react";
+// import { setAppLoading, setAppNotLoading } from "../../../redux/slice";
 
 const AppLayout = ({ children }) => {
   const location = useLocation();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   function isActive(basePath) {
     return location.pathname.startsWith(basePath);
   }
 
   const appLoading = useSelector((state) => state.user.appLoading);
-  console.log(appLoading);
+  // console.log(appLoading);
 
-  useEffect(() => {
-    dispatch(setAppLoading());
-    setTimeout(() => {
-      dispatch(setAppNotLoading());
-    }, 2000);
-  }, []);
+  // useEffect(() => {
+  //   dispatch(setAppLoading());
+  //   setTimeout(() => {
+  //     dispatch(setAppNotLoading());
+  //   }, 2000);
+  // }, []);
 
   return (
     <div className={classes.AppLayout}>
