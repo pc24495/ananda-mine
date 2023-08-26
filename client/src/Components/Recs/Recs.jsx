@@ -19,14 +19,16 @@ const Recs = () => {
   return (
     <div className={classes.Recs}>
       <div className={classes.CardsSection}>
-        <div className={classes.Card}>
-          <img
-            src="https://picsum.photos/200/300"
-            alt=""
-            className={classes.Image}
-          />
+        <div className={classes.Stack}>
+          <div className={classes.Card}>
+            <img
+              src="https://picsum.photos/200/300"
+              alt=""
+              className={classes.Image}
+            />
+          </div>
+          <div className={classes.CardOverlay}></div>
         </div>
-        <div className={classes.CardOverlay}></div>
         <div className={classes.CardFooter}></div>
       </div>
     </div>
