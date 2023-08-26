@@ -18,16 +18,17 @@ const Recs = () => {
   };
   return (
     <div className={classes.Recs}>
-      Recs
-      <button
-        onClick={(event) => {
-          event.preventDefault();
-          navigate("/app/chat");
-        }}
-      >
-        Go to /app/chat
-      </button>
-      <button onClick={setAndUnsetAppLoading}>Test app loading</button>
+      <div className={classes.CardsSection}>
+        <div className={classes.Card}>
+          <img
+            src="https://picsum.photos/200/300"
+            alt=""
+            className={classes.Image}
+          />
+        </div>
+        <div className={classes.CardOverlay}></div>
+        <div className={classes.CardFooter}></div>
+      </div>
     </div>
   );
 };
