@@ -14,12 +14,14 @@
     background-color: black;
     margin-top: 2.25rem;
     position: relative;
+    border-radius: 1rem;
+    overflow: hidden;
 
-    .Stack {
+    .Card {
       height: 100%;
       width: 100%;
       position: relative;
-      .Card {
+      .CardMain {
         height: 100%;
         width: 100%;
         position: relative;
@@ -33,27 +35,54 @@
 
       .CardOverlay {
         position: absolute;
+        //Change the 6.375rem to the height of the CardFooter using a variable (change***)
         bottom: 6.375rem;
         left: 0rem;
-        z-index: 2000;
+        z-index: 20000;
         height: calc(100% - 6.375rem);
         width: 100%;
         // background-color: green;
-      }
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
 
-      .CardOverlay::before {
-        content: "";
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 10%;
-        background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 1) 0%,
-          rgba(0, 0, 0, 0) 100%
-        );
-        pointer-events: none;
+        .SlideTicks {
+          height: 0.75rem;
+          width: 100%;
+          background-color: red;
+        }
+
+        .ArrowBox {
+          flex: 1;
+          width: 100%;
+        }
+
+        .ArrowBox:hover {
+          cursor: pointer;
+        }
+
+        .InfoBox {
+          height: 3rem;
+          width: 100%;
+          // background-color: blue;
+          border: 1px solid black;
+        }
+
+        .OverlayBlur {
+          content: "";
+          // position: absolute;
+          // bottom: 0;
+          // left: 0;
+          width: 100%;
+          height: 5%;
+          background: linear-gradient(
+            to top,
+            rgba(0, 0, 0, 1) 20%,
+            rgba(0, 0, 0, 0) 100%
+          );
+          pointer-events: none;
+        }
       }
     }
     .CardFooter {
