@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 // import { useEffect } from "react";
 import { setAppLoading, setAppNotLoading } from "../../../redux/slice";
+import { AiFillInfoCircle } from "react-icons/ai";
 
 const Recs = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,19 @@ const Recs = () => {
           <div className={classes.CardOverlay}>
             <div className={classes.SlideTicks}></div>
             <div className={classes.ArrowBox}></div>
-            <div className={classes.InfoBox}></div>
+            <div className={classes.InfoBox}>
+              <div className={classes.MainInfoBox}>
+                <div className={classes.NameAndAge}>
+                  <div className={classes.Name}>John Doe</div>
+                  <div className={classes.Age}>23</div>
+                </div>
+              </div>
+              <div className={classes.InfoButtonContainer}>
+                <AiFillInfoCircle
+                  className={classes.InfoButton}
+                ></AiFillInfoCircle>
+              </div>
+            </div>
             <div className={classes.OverlayBlur}></div>
           </div>
         </div>
