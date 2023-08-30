@@ -1,52 +1,26 @@
 // import PropTypes from 'prop-types'
 import classes from "./Recs.module.scss";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+// import { useNavigate } from "react-router-dom";
+// import { useDispatch } from "react-redux";
 // import { useEffect } from "react";
-import { setAppLoading, setAppNotLoading } from "../../../redux/slice";
-import { AiFillInfoCircle } from "react-icons/ai";
+// import { setAppLoading, setAppNotLoading } from "../../../redux/slice";
+import Card from "./Card/Card.jsx";
 
 const Recs = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const dispatch = useDispatch();
+  // const navigate = useNavigate();
 
-  const setAndUnsetAppLoading = (event) => {
-    event.preventDefault();
-    dispatch(setAppLoading());
-    setTimeout(() => {
-      dispatch(setAppNotLoading());
-    }, 900);
-  };
+  // const setAndUnsetAppLoading = (event) => {
+  //   event.preventDefault();
+  //   dispatch(setAppLoading());
+  //   setTimeout(() => {
+  //     dispatch(setAppNotLoading());
+  //   }, 900);
+  // };
   return (
     <div className={classes.Recs}>
       <div className={classes.CardsSection}>
-        <div className={classes.Card}>
-          <div className={classes.CardMain}>
-            <img
-              src="https://picsum.photos/200/300"
-              alt=""
-              className={classes.Image}
-            />
-          </div>
-          <div className={classes.CardOverlay}>
-            <div className={classes.SlideTicks}></div>
-            <div className={classes.ArrowBox}></div>
-            <div className={classes.InfoBox}>
-              <div className={classes.MainInfoBox}>
-                <div className={classes.NameAndAge}>
-                  <div className={classes.Name}>John Doe</div>
-                  <div className={classes.Age}>23</div>
-                </div>
-              </div>
-              <div className={classes.InfoButtonContainer}>
-                <AiFillInfoCircle
-                  className={classes.InfoButton}
-                ></AiFillInfoCircle>
-              </div>
-            </div>
-            <div className={classes.OverlayBlur}></div>
-          </div>
-        </div>
+        <Card></Card>
         <div className={classes.CardFooter}></div>
       </div>
     </div>
