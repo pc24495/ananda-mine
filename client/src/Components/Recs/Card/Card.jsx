@@ -5,9 +5,14 @@ import {
   AiOutlineArrowRight,
 } from "react-icons/ai";
 import { useState } from "react";
+import { BiLogOut } from "react-icons/bi";
 
 const Card = () => {
-  const [pics] = useState(["1", "2", "3"]);
+  const [pics] = useState([
+    "https://picsum.photos/200/300",
+    "/pexels-rizky-sabriansyah-18165273.jpg",
+    "/DoctorOnPhone.jpeg",
+  ]);
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
   const decrementPicIndex = () => {
@@ -25,11 +30,20 @@ const Card = () => {
   return (
     <div className={classes.Card}>
       <div className={classes.CardMain}>
-        <img
-          src="https://picsum.photos/200/300"
-          alt=""
-          className={classes.Image}
-        />
+        {pics.map((pic, index) => {
+          return (
+            <img
+              key={"pic_" + index}
+              src={pic}
+              alt=""
+              className={
+                index == currentPicIndex
+                  ? `${classes.Image} ${classes.ImageActive}`
+                  : classes.Image
+              }
+            />
+          );
+        })}
       </div>
       <div className={classes.CardOverlay}>
         <div className={classes.SlideTicks}>
@@ -61,6 +75,11 @@ const Card = () => {
               <div className={classes.Name}>John Doe</div>
               <div className={classes.Age}>23</div>
             </div>
+            {currentPicIndex > 1 && (
+              <p className={classes.Bio}>
+                Looking for friends or people to go to concerts with!
+              </p>
+            )}
           </div>
           <div className={classes.InfoButtonContainer}>
             <AiFillInfoCircle className={classes.InfoButton}></AiFillInfoCircle>

@@ -22,11 +22,6 @@
     justify-content: flex-start;
     align-items: flex-start;
     flex: 1;
-    .LeftSidebar {
-      width: 22rem;
-      height: 100%;
-      background-color: blue;
-    }
 
     .MainContent {
       width: calc(100vw - 22rem);
@@ -52,12 +47,6 @@
 
     .MainLayout {
       width: 100%;
-      .LeftSidebar {
-        width: 22rem;
-        height: 100%;
-        background-color: blue;
-        display: none;
-      }
 
       .MainContent {
         width: 100%;

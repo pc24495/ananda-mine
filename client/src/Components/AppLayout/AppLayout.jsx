@@ -5,6 +5,7 @@ import { IoSparkles } from "react-icons/io5";
 import { BsFillChatFill, BsFillPersonFill } from "react-icons/bs";
 import { NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
+import LeftSidebar from "../LeftSidebar/LeftSidebar";
 // import { useEffect } from "react";
 // import { setAppLoading, setAppNotLoading } from "../../../redux/slice";
 
@@ -32,7 +33,7 @@ const AppLayout = ({ children }) => {
         style={{ display: appLoading ? "block" : "none" }}
       ></div>
       <div className={classes.MainLayout}>
-        <div className={classes.LeftSidebar}>Left Sidebar</div>
+        <LeftSidebar></LeftSidebar>
         <div className={classes.MainContent}>{children}</div>
       </div>
       <div className={classes.MobileFooter}>

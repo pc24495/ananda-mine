@@ -2,6 +2,10 @@
   height: 100%;
   width: 100%;
   position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
   .CardMain {
     height: 100%;
     width: 100%;
@@ -10,7 +14,13 @@
     .Image {
       width: 100%;
       height: auto;
+      display: none;
+      cursor: pointer;
+    }
+
+    .ImageActive {
       display: block;
+      cursor: pointer;
     }
   }
 
@@ -53,6 +63,10 @@
       display: flex;
       flex-direction: row;
 
+      &:hover {
+        cursor: pointer;
+      }
+
       .LeftArrowBox {
         height: 100%;
         width: 50%;
@@ -70,10 +84,15 @@
         }
 
         &:hover {
+          cursor: pointer;
           .Arrow {
             display: block;
           }
         }
+      }
+
+      .LeftArrowBox:hover {
+        cursor: pointer;
       }
 
       .RightArrowBox {
@@ -93,10 +112,15 @@
         }
 
         &:hover {
+          cursor: pointer;
           .Arrow {
             display: block;
           }
         }
+      }
+
+      .RightArrowBox:hover {
+        cursor: pointer;
       }
     }
 
@@ -140,11 +164,27 @@
             line-height: 1.5rem;
           }
         }
+
+        .Bio {
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          -webkit-line-clamp: 3; /* Number of lines to show */
+          // max-height: 3em; /* Adjust this to control the line height */
+          margin-top: 0.125rem;
+          margin-bottom: 0rem;
+          text-align: left;
+          color: white;
+          font-family: "Montserrat", sans-serif;
+          font-size: 1rem;
+        }
       }
 
       .InfoButtonContainer {
         width: 1.75rem;
         color: white;
+        display: flex;
         flex-direction: column;
         justify-content: flex-end;
 
@@ -154,6 +194,10 @@
           &:hover {
             cursor: pointer;
           }
+        }
+
+        &:hover {
+          cursor: pointer;
         }
       }
     }
