@@ -5,13 +5,12 @@ import {
   AiOutlineArrowRight,
 } from "react-icons/ai";
 import { useState } from "react";
-import { BiLogOut } from "react-icons/bi";
 
 const Card = () => {
   const [pics] = useState([
-    "https://picsum.photos/200/300",
-    "/pexels-rizky-sabriansyah-18165273.jpg",
-    "/DoctorOnPhone.jpeg",
+    "https://picsum.photos/200/300?random=1",
+    "https://picsum.photos/200/300?random=2",
+    "https://picsum.photos/200/300?random=3",
   ]);
   const [currentPicIndex, setCurrentPicIndex] = useState(0);
 
@@ -75,7 +74,7 @@ const Card = () => {
               <div className={classes.Name}>John Doe</div>
               <div className={classes.Age}>23</div>
             </div>
-            {currentPicIndex > 1 && (
+            {currentPicIndex > 0 && (
               <p className={classes.Bio}>
                 Looking for friends or people to go to concerts with!
               </p>
