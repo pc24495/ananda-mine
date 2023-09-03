@@ -6,13 +6,8 @@ const Chat = () => {
   const navigate = useNavigate();
   return (
     <div className={classes.Chat}>
-      Chat
-      <button
-        onClick={(event) => {
-          event.preventDefault();
-          navigate("/app/recs");
-        }}
-      ></button>
+      <div className={classes.ChatBox}></div>
+      <div className={classes.Profile}></div>
     </div>
   );
 };

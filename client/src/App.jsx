@@ -44,7 +44,7 @@ const ProtectedRoute = () => {
     <AppLayout>
       <Routes>
         <Route path="recs" element={<Recs />} />
-        <Route path="chat" element={<Chat />} />
+        <Route path="chat/*" element={<Chat />} />
         <Route index element={<Chat />} />
       </Routes>
     </AppLayout>

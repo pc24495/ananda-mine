@@ -2,13 +2,14 @@ import { useState, useContext } from "react";
 import classes from "./LeftSidebar.module.scss";
 import { BiLogOut } from "react-icons/bi";
 import { AuthContext } from "../../App.jsx";
+import { NavLink } from "react-router-dom";
 
 const LeftSidebar = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
 
   const [isMatchNotMessage, setIsMatchNotMessage] = useState(false);
 
-  const messages = new Array(20).fill(null);
+  const messages = new Array(8).fill(null);
 
   const logout = () => {
     setIsAuthenticated(false);
@@ -75,25 +76,50 @@ const LeftSidebar = () => {
         className={classes.Messages}
         style={{ display: isMatchNotMessage ? "none" : "flex" }}
       >
-        <div className={classes.Message}>
-          <div className={classes.MessagePicContainerOuter}>
-            <div className={classes.MessagePicContainer}>
-              <img
-                className={classes.MessagePic}
-                src="/TomCruiseProfilePic.webp"
-              ></img>
-            </div>
-          </div>
-          <div className={classes.MessageContent}>
-            <h3 className={classes.Name}>Tom</h3>
-            <p className={classes.LastMessage}>
-              Sounds awesome! Looking forward to it
-            </p>
-          </div>
-        </div>
+        {messages.map((message, index) => {
+          return (
+            <NavLink
+              className={classes.Message}
+              key={"message_" + index}
+              to={`/app/chat/message_${index}`}
+            >
+              <div className={classes.MessagePicContainerOuter}>
+                <div className={classes.MessagePicContainer}>
+                  <img
+                    className={classes.MessagePic}
+                    src="/TomCruiseProfilePic.webp"
+                  ></img>
+                </div>
+              </div>
+              <div className={classes.MessageContent}>
+                <h3 className={classes.Name}>Tom</h3>
+                <p className={classes.LastMessage}>
+                  Sounds awesome! Looking forward to it
+                </p>
+              </div>
+            </NavLink>
+          );
+        })}
       </div>
     </div>
   );
 };
+
+// <div className={classes.Message}>
+//           <div className={classes.MessagePicContainerOuter}>
+//             <div className={classes.MessagePicContainer}>
+//               <img
+//                 className={classes.MessagePic}
+//                 src="/TomCruiseProfilePic.webp"
+//               ></img>
+//             </div>
+//           </div>
+//           <div className={classes.MessageContent}>
+//             <h3 className={classes.Name}>Tom</h3>
+//             <p className={classes.LastMessage}>
+//               Sounds awesome! Looking forward to it
+//             </p>
+//           </div>
+//         </div>
 
 export default LeftSidebar;
