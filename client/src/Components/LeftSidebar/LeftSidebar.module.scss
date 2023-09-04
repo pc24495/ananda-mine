@@ -30,6 +30,7 @@
 
       &:hover {
         background-color: #604803;
+        cursor: pointer;
       }
 
       .UserPicContainer {
@@ -78,6 +79,7 @@
 
       &:hover {
         background-color: rgba(17, 20, 24, 1);
+        cursor: pointer;
 
         .LogoutIcon {
           color: rgb(255, 68, 88);
