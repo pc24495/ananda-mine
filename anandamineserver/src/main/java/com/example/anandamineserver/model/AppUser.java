@@ -1,8 +1,5 @@
 package com.example.anandamineserver.model;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 //import javax.validation.constraints.Size;
 import jakarta.validation.constraints.Size;
 
@@ -16,6 +13,11 @@ public class AppUser {
     @Size(max = 20)
     private String name;
 
+    @Column(unique = true)  // This makes the username field unique
+    @Size(max = 20)
+    private String username;
+    @Size(max = 200)
+    private String password;
     public AppUser() {
 
     }
@@ -34,5 +36,21 @@ public class AppUser {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
+    public String getUsername() {
+        return this.username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

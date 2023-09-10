@@ -1,0 +1,36 @@
+.LoginCreate {
+  min-height: 18rem;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .InputContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 1rem;
+
+    label {
+      display: block;
+    }
+
+    input {
+      display: block;
+    }
+
+    p {
+      margin: 0rem;
+      margin-top: 0.25rem;
+      margin-bottom: -0.75rem;
+      text-align: center;
+      color: red;
+      font-size: 1rem;
+    }
+  }
+
+  button {
+    margin-top: 1rem;
+    width: 100%;
+  }
+}

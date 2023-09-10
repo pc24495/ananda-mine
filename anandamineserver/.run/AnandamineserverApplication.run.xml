@@ -2,9 +2,10 @@
   <configuration default="false" name="AnandamineserverApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
     <option name="ACTIVE_PROFILES" />
     <envs>
+      <env name="ANANDAMINE_DB_PASSWORD" value="PrinceBarnacleFreePress40580540" />
       <env name="ANANDAMINE_DB_URL" value="jdbc:postgresql://localhost:5432/anandamine" />
       <env name="ANANDAMINE_DB_USERNAME" value="prajwal" />
-      <env name="ANANDAMINE_DB_PASSWORD" value="PrinceBarnacleFreePress40580540" />
+      <env name="TOKEN_SECRET" value="18sOXQ273NnvlbDP9L98oARy5" />
     </envs>
     <module name="anandamineserver" />
     <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.anandamineserver.AnandamineserverApplication" />

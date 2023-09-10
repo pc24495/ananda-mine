@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import classes from "./Login.module.scss";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../App.jsx";
+import LoginCreateWithPassword from "./LoginCreateWithPassword/LoginCreateWithPassword.jsx";
 
 // import MainLoginBox from "./MainLoginBox/MainLoginBox.jsx";
 
@@ -10,6 +11,8 @@ const Login = () => {
     loginBox: false,
     createBox: false,
   });
+
+  const [usernameLogin, setUsernameLogin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -35,6 +38,16 @@ const Login = () => {
     navigate("/app/recs");
   };
 
+  const switchToUsernameLogin = (event) => {
+    event.preventDefault();
+    setUsernameLogin(true);
+  };
+
+  const switchToStandardLogin = (event) => {
+    event.preventDefault();
+    setUsernameLogin(false);
+  };
+
   return (
     <div className={classes.Login}>
       <div
@@ -47,46 +60,66 @@ const Login = () => {
         }}
       >
         <div className={classes.LoginBox}>
-          <p className={classes.CloseButton} onClick={closeLoginCreateBox}>
-            X
-          </p>
-          <img src="/pinkheart.svg" alt="Logo" />
-          <h3 className={classes.CreateAccountHeader}>
-            {loginCreateBoxOpen.loginBox ? "Log In" : ""}
-            {loginCreateBoxOpen.createBox ? "Create Account" : ""}
-          </h3>
-          <p className={classes.Terms}>
-            By clicking login, you agree to our <span>terms.</span>
-          </p>
-          <button className={classes.LoginButtonInBox} onClick={moveToRecs}>
-            Log in with Google (unavailable)
-          </button>
-          <button
-            className={classes.LoginButtonInBox}
-            onClick={moveToRecs}
-            style={{
-              backgroundColor: "silver",
-              border: "0.125rem solid black",
-              color: "black",
-            }}
+          <div
+            className={classes.LoginBoxInner}
+            style={{ display: usernameLogin ? "none" : "flex" }}
           >
-            Log in with Facebook (unavailable)
-          </button>
-          <button
-            className={classes.LoginButtonInBox}
-            onClick={moveToRecs}
-            style={{
-              backgroundColor: "silver",
-              border: "0.125rem solid black",
-              color: "black",
-            }}
-          >
-            Log in with Phone Number (unavailable)
-          </button>
-          <p className={classes.LoginInfo}>
-            Click here to learn more about this project. Or watch a video
-            explaining it.
-          </p>
+            <p className={classes.CloseButton} onClick={closeLoginCreateBox}>
+              X
+            </p>
+            <img src="/pinkheart.svg" alt="Logo" />
+            <h3 className={classes.CreateAccountHeader}>
+              {loginCreateBoxOpen.loginBox ? "Log In" : ""}
+              {loginCreateBoxOpen.createBox ? "Create Account" : ""}
+            </h3>
+            <p className={classes.Terms}>
+              By clicking login, you agree to our <span>terms.</span>
+            </p>
+            <button className={classes.LoginButtonInBox} onClick={moveToRecs}>
+              Log in with Google (unavailable)
+            </button>
+            <button
+              className={classes.LoginButtonInBox}
+              onClick={switchToUsernameLogin}
+              style={{
+                backgroundColor: "silver",
+                border: "0.125rem solid black",
+                color: "black",
+              }}
+            >
+              Login with username/password
+            </button>
+            <button
+              className={classes.LoginButtonInBox}
+              onClick={moveToRecs}
+              style={{
+                backgroundColor: "silver",
+                border: "0.125rem solid black",
+                color: "black",
+              }}
+            >
+              Log in with Facebook (unavailable)
+            </button>
+            <button
+              className={classes.LoginButtonInBox}
+              onClick={moveToRecs}
+              style={{
+                backgroundColor: "silver",
+                border: "0.125rem solid black",
+                color: "black",
+              }}
+            >
+              Log in with Phone Number (unavailable)
+            </button>
+            <p className={classes.LoginInfo}>
+              Click here to learn more about this project. Or watch a video
+              explaining it.
+            </p>
+          </div>
+          <LoginCreateWithPassword
+            style={{ display: usernameLogin ? "flex" : "none" }}
+            backFunction={switchToStandardLogin}
+          ></LoginCreateWithPassword>
         </div>
       </div>
       <div className={classes.LoginHeader}>
