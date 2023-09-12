@@ -87,7 +87,7 @@ const Login = () => {
                 color: "black",
               }}
             >
-              Login with username/password
+              Sign up with username/password
             </button>
             <button
               className={classes.LoginButtonInBox}

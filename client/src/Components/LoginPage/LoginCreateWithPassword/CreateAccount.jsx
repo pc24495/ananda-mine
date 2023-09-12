@@ -1,8 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useForm, Controller } from "react-hook-form";
 import classes from "./LoginCreateAccount.module.scss";
 import axios from "../../../config/axiosConfig.js";
 
-const CreateAccount = () => {
+const CreateAccount = (props) => {
   const {
     handleSubmit,
     control,
@@ -12,6 +13,7 @@ const CreateAccount = () => {
   } = useForm({
     defaultValues: {
       username: "",
+      name: "",
       password: "",
       confirmPassword: "",
     },
@@ -179,6 +181,9 @@ const CreateAccount = () => {
       </div>
 
       <button type="submit">Create Account</button>
+      <p onClick={props.setLogin}>
+        Already have an account? Click here to log in
+      </p>
     </form>
   );
 };

@@ -33,4 +33,12 @@
     margin-top: 1rem;
     width: 100%;
   }
+
+  p {
+    &:hover {
+      color: blue;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
 }

@@ -10,7 +10,10 @@ import com.example.anandamineserver.model.AppUser;
 import com.example.anandamineserver.service.AppUserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import com.example.anandamineserver.dto.LoginUsernamePasswordRequest;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,6 +29,9 @@ public class AppUserController {
 
     @Autowired
     private JwtUtil jwtUtil;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Value("${TOKEN_SECRET}")
     private String SECRET;
@@ -99,6 +105,37 @@ public class AppUserController {
 
         response.put("error", "Unknown error");
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/login-username-password")
+    public ResponseEntity<Map<String, Object>> login(@RequestBody LoginUsernamePasswordRequest loginRequest) {
+        Map<String, Object> response = new HashMap<>();
+        Map<String, Object> fieldErrors = new HashMap<>();
+        AppUser appUser = appUserService.findByUsername(loginRequest.getUsername());
+
+        if (appUser == null) {
+            fieldErrors.put("username", "Username not found");
+            response.put("fieldErrors", fieldErrors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+
+        boolean passwordMatches = passwordEncoder.matches(loginRequest.getPassword(), appUser.getPassword());
+
+        if (!passwordMatches) {
+            fieldErrors.put("password", "Incorrect password");
+            response.put("fieldErrors", fieldErrors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+
+        // If everything is correct, generate a token and send it back
+        String token = jwtUtil.createToken(appUser.getId(), SECRET);
+
+        response.put("id", appUser.getId());
+        response.put("username", appUser.getUsername());
+        response.put("name", appUser.getName());
+        response.put("token", token);
+
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
     @GetMapping("/getLastUser")

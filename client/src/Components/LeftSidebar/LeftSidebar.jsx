@@ -1,17 +1,22 @@
 import { useState, useContext } from "react";
+import { useDispatch } from "react-redux";
 import classes from "./LeftSidebar.module.scss";
 import { BiLogOut } from "react-icons/bi";
 import { AuthContext } from "../../App.jsx";
 import { NavLink } from "react-router-dom";
+import { logOut } from "../../../redux/slice";
 
 const LeftSidebar = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
+  const dispatch = useDispatch();
 
   const [isMatchNotMessage, setIsMatchNotMessage] = useState(false);
 
   const messages = new Array(8).fill(null);
 
   const logout = () => {
+    localStorage.removeItem("user");
+    dispatch(logOut());
     setIsAuthenticated(false);
   };
 
@@ -26,8 +31,6 @@ const LeftSidebar = () => {
     event.stopPropagation();
     event.preventDefault();
   };
-
-  console.log(isMatchNotMessage);
 
   return (
     <div className={classes.LeftSidebar}>

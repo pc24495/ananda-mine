@@ -5,6 +5,8 @@ const initialState = {
   loggedIn: false,
   appLoading: false,
   counter: 0,
+  name: "",
+  token: null,
 };
 
 const userSlice = createSlice({
@@ -12,13 +14,16 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     initialUserSetup: (state, action) => {
+      console.log(action);
       state.id = action.payload.id;
-      state.loggedIn = action.payload.loggedIn;
+      state.name = action.payload.name;
+      state.loggedIn = true;
+      state.token = action.payload.token;
     },
     setAppLoading: (state) => {
       state.appLoading = true;
     },
-    logOff: (state) => {
+    logOut: (state) => {
       // eslint-disable-next-line no-unused-vars
       state = initialState;
     },
@@ -30,6 +35,6 @@ const userSlice = createSlice({
 
 console.log("userSlice: ", userSlice);
 
-export const { initialUserSetup, setAppLoading, setAppNotLoading, logOff } =
+export const { initialUserSetup, setAppLoading, setAppNotLoading, logOut } =
   userSlice.actions;
 export default userSlice.reducer;

@@ -5,7 +5,6 @@ import com.example.anandamineserver.repository.AppUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
 public class AppUserServiceImpl implements AppUserService {
@@ -26,4 +25,10 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUser getLastAppUser() {
         return appUserRepository.findTopByOrderByIdDesc();
     }
+
+    @Override
+    public AppUser findByUsername(String username) {
+        return appUserRepository.findByUsername(username);
+    }
+
 }

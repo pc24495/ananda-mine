@@ -7,4 +7,6 @@ import java.util.List;
 public interface AppUserService {
     public AppUser saveAppUser(AppUser appUser);
     public AppUser getLastAppUser();
+
+    AppUser findByUsername(String username);
 }
