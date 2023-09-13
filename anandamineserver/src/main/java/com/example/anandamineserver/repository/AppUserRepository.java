@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface AppUserRepository extends JpaRepository<AppUser, Integer> {
     AppUser findTopByOrderByIdDesc();
     AppUser findByUsername(String username);
+
+    AppUser findById(int Id);
 }

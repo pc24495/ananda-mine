@@ -39,6 +39,7 @@ const Login = (props) => {
           username: response.data.username,
           token: response.data.token,
         };
+        localStorage.setItem("name", response.data.name);
         localStorage.setItem("user", user);
         dispatch(initialUserSetup({ ...user }));
         setIsAuthenticated(true);
@@ -64,11 +65,6 @@ const Login = (props) => {
           });
         }
       });
-    // console.log(data);
-    // const pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-    // const testString = "i2T#r$jbrp6cWR5";
-
-    // console.log(pattern.test(testString));
   };
 
   return (

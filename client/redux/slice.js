@@ -30,11 +30,19 @@ const userSlice = createSlice({
     setAppNotLoading: (state) => {
       state.appLoading = false;
     },
+    setName: (state, action) => {
+      state.name = action.payload.name;
+    },
   },
 });
 
 console.log("userSlice: ", userSlice);
 
-export const { initialUserSetup, setAppLoading, setAppNotLoading, logOut } =
-  userSlice.actions;
+export const {
+  initialUserSetup,
+  setAppLoading,
+  setAppNotLoading,
+  logOut,
+  setName,
+} = userSlice.actions;
 export default userSlice.reducer;

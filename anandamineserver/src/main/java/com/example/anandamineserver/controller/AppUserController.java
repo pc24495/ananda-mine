@@ -1,5 +1,6 @@
 package com.example.anandamineserver.controller;
 import com.example.anandamineserver.JwtUtil;
+import com.example.anandamineserver.dto.PatchNameTokenRequest;
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -79,6 +80,8 @@ public class AppUserController {
             if (!matcher.find()) {
                 return new ResponseEntity<>(Map.of("error", "Password must contain at least one uppercase letter, one lowercase letter, and a number"), HttpStatus.BAD_REQUEST);
             }
+
+            appUser.setPassword(passwordEncoder.encode(password));
             AppUser savedUser = appUserService.saveAppUser(appUser);
             String token = jwtUtil.createToken(savedUser.getId(), SECRET);
 
@@ -118,6 +121,8 @@ public class AppUserController {
             response.put("fieldErrors", fieldErrors);
             return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
         }
+        System.out.println(appUser.getUsername());
+        System.out.println(loginRequest.getPassword());
 
         boolean passwordMatches = passwordEncoder.matches(loginRequest.getPassword(), appUser.getPassword());
 
@@ -137,6 +142,27 @@ public class AppUserController {
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
+
+    @PatchMapping("/name-token")
+    public ResponseEntity<Map<String, Object>> changeNameToken(@RequestBody PatchNameTokenRequest patchNameRequest) {
+        Map<String, Object> response = new HashMap<>();
+        Map<String, Object> fieldErrors = new HashMap<>();
+        String token = patchNameRequest.getToken();
+        if(token == null) {
+            fieldErrors.put("token", "Token invalid");
+            response.put("fieldErrors", fieldErrors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+
+        int userID = jwtUtil.getUserIdFromToken(token, SECRET);
+        AppUser appUser = appUserService.findById(userID);
+        appUser.setName(patchNameRequest.getName());
+        appUserService.saveAppUser(appUser);
+        response.put("message", "Success!");
+        response.put("name", appUser.getName());
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
 
     @GetMapping("/getLastUser")
     public AppUser get() {

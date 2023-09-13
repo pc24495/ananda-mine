@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import classes from "./LeftSidebar.module.scss";
 import { BiLogOut } from "react-icons/bi";
 import { AuthContext } from "../../App.jsx";
@@ -9,6 +9,7 @@ import { logOut } from "../../../redux/slice";
 const LeftSidebar = () => {
   const { setIsAuthenticated } = useContext(AuthContext);
   const dispatch = useDispatch();
+  const name = useSelector((state) => state.user.name);
 
   const [isMatchNotMessage, setIsMatchNotMessage] = useState(false);
 
@@ -16,6 +17,7 @@ const LeftSidebar = () => {
 
   const logout = () => {
     localStorage.removeItem("user");
+    localStorage.removeItem("name");
     dispatch(logOut());
     setIsAuthenticated(false);
   };
@@ -42,7 +44,7 @@ const LeftSidebar = () => {
               src="/TomCruiseProfilePic.webp"
             ></img>
           </div>
-          <h2 className={classes.UserName}>Tom</h2>
+          <h2 className={classes.UserName}>{name}</h2>
         </div>
         <div className={classes.SpaceDiv}></div>
         <div className={classes.LogoutIconContainer} onClick={logout}>

@@ -17,7 +17,6 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     public AppUser saveAppUser(AppUser appUser) {
-        appUser.setPassword(passwordEncoder.encode(appUser.getPassword())); // Encode the password
         return appUserRepository.save(appUser);
     }
 
@@ -29,6 +28,11 @@ public class AppUserServiceImpl implements AppUserService {
     @Override
     public AppUser findByUsername(String username) {
         return appUserRepository.findByUsername(username);
+    }
+
+    @Override
+    public AppUser findById(int Id) {
+        return appUserRepository.findById(Id);
     }
 
 }

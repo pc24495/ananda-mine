@@ -9,4 +9,6 @@ public interface AppUserService {
     public AppUser getLastAppUser();
 
     AppUser findByUsername(String username);
+
+    AppUser findById(int id);
 }
