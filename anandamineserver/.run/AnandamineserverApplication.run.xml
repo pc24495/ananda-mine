@@ -5,6 +5,9 @@
       <env name="ANANDAMINE_DB_PASSWORD" value="PrinceBarnacleFreePress40580540" />
       <env name="ANANDAMINE_DB_URL" value="jdbc:postgresql://localhost:5432/anandamine" />
       <env name="ANANDAMINE_DB_USERNAME" value="prajwal" />
+      <env name="AWS_ACCESS_KEY_ID" value="AKIAZRHPG5BRURQQ2LNF" />
+      <env name="AWS_SECRET_ACCESS_KEY" value="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" />
+      <env name="ENVIRONMENT_TYPE" value="DEV" />
       <env name="TOKEN_SECRET" value="18sOXQ273NnvlbDP9L98oARy5" />
     </envs>
     <module name="anandamineserver" />

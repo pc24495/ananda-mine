@@ -7,6 +7,12 @@ const initialState = {
   counter: 0,
   name: "",
   token: null,
+  pic1Url: null,
+  pic2Url: null,
+  pic3Url: null,
+  pic4Url: null,
+  pic5Url: null,
+  pic6Url: null,
 };
 
 const userSlice = createSlice({
@@ -33,6 +39,10 @@ const userSlice = createSlice({
     setName: (state, action) => {
       state.name = action.payload.name;
     },
+    setPic1Url: (state, action) => {
+      state.pic1Url = action.payload.pic1Url;
+    },
+    setPics: (state, action) => {},
   },
 });
 
@@ -44,5 +54,6 @@ export const {
   setAppNotLoading,
   logOut,
   setName,
+  setPic1Url,
 } = userSlice.actions;
 export default userSlice.reducer;

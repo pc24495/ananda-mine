@@ -1,6 +1,7 @@
 package com.example.anandamineserver.controller;
 import com.example.anandamineserver.JwtUtil;
 import com.example.anandamineserver.dto.PatchNameTokenRequest;
+import com.example.anandamineserver.service.S3Service;
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -9,13 +10,16 @@ import org.springframework.http.ResponseEntity;
 
 import com.example.anandamineserver.model.AppUser;
 import com.example.anandamineserver.service.AppUserService;
+import com.example.anandamineserver.service.S3Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.anandamineserver.dto.LoginUsernamePasswordRequest;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
@@ -34,8 +38,14 @@ public class AppUserController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    @Autowired
+    private S3Service s3Service;
+
     @Value("${TOKEN_SECRET}")
     private String SECRET;
+
+    @Value("${ENVIRONMENT_TYPE}")
+    private String ENVIRONMENT_TYPE;
 
     @PostMapping("/add")
     public String add(@RequestBody AppUser appUser) {
@@ -138,11 +148,19 @@ public class AppUserController {
         response.put("id", appUser.getId());
         response.put("username", appUser.getUsername());
         response.put("name", appUser.getName());
+        response.put("pic1Url", appUser.getPic1Url());
+        System.out.println(appUser.getName());
+        response.put("pic2Url", appUser.getPic2Url());
+        response.put("pic3Url", appUser.getPic3Url());
+        response.put("pic4Url", appUser.getPic4Url());
+        response.put("pic5Url", appUser.getPic5Url());
+        response.put("pic6Url", appUser.getPic6Url());
         response.put("token", token);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
+    //Make sure this takes into account invalid tokens later
     @PatchMapping("/name-token")
     public ResponseEntity<Map<String, Object>> changeNameToken(@RequestBody PatchNameTokenRequest patchNameRequest) {
         Map<String, Object> response = new HashMap<>();
@@ -161,6 +179,78 @@ public class AppUserController {
         response.put("message", "Success!");
         response.put("name", appUser.getName());
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    //Make sure this takes into account invalid tokens later
+    @PatchMapping(value = "/pics-token", consumes = "multipart/form-data")
+    public ResponseEntity<Map<String,Object>> changePicsToken(
+            @RequestPart("token") String token,
+            @RequestPart(name = "pic1", required = false) MultipartFile pic1,
+            @RequestPart(name = "pic2", required = false) MultipartFile pic2,
+            @RequestPart(name = "pic3", required = false) MultipartFile pic3,
+            @RequestPart(name = "pic4", required = false) MultipartFile pic4,
+            @RequestPart(name = "pic5", required = false) MultipartFile pic5,
+            @RequestPart(name = "pic6", required = false) MultipartFile pic6
+    )  {
+        System.out.println("Patch route");
+        System.out.println(pic1);
+        System.out.println(pic2);
+
+        Map<String, Object> response = new HashMap<>();
+        Map<String, Object> fieldErrors = new HashMap<>();
+        if(token == null) {
+            fieldErrors.put("token", "Token invalid");
+            response.put("fieldErrors", fieldErrors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+
+
+        String bucketName = "anandamine-dev-preprocessed-pics";  // replace with your actual bucket name
+        int userId = jwtUtil.getUserIdFromToken(token, SECRET);
+        AppUser appUser = appUserService.findById(userId);
+
+        for (int i = 1; i <= 6; i++) {
+            MultipartFile pic = null;
+            switch(i) {
+                case 1: pic = pic1; break;
+                case 2: pic = pic2; break;
+                case 3: pic = pic3; break;
+                case 4: pic = pic4; break;
+                case 5: pic = pic5; break;
+                case 6: pic = pic6; break;
+            }
+
+            String fileName = ENVIRONMENT_TYPE + "_" + userId + "_" + i;
+            try {
+                // Call to uploadFile here
+                String url = pic == null ? null : s3Service.uploadFile(pic, fileName, bucketName);
+                switch (i) {
+                    case 1: appUser.setPic1Url(url); break;
+                    case 2: appUser.setPic2Url(url); break;
+                    case 3: appUser.setPic3Url(url); break;
+                    case 4: appUser.setPic4Url(url); break;
+                    case 5: appUser.setPic5Url(url); break;
+                    case 6: appUser.setPic6Url(url); break;
+                }
+
+                // Populate response
+                if (url != null) {
+                    response.put("pic" + i + "Url", url);
+                }
+            } catch (IOException e) {
+                System.out.println(e);
+            }
+
+            // Update AppUser fields based on the picture number
+
+        }
+
+        appUserService.saveAppUser(appUser);
+
+        response.put("message", "Successfully uploaded pics");
+        System.out.println("Pics Patch Token Route Over");
+
+        return ResponseEntity.ok(response);
     }
 
 

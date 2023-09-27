@@ -27,12 +27,10 @@ const CreateAccount = (props) => {
         name: data.name,
       })
       .then((response) => {
-        console.log(response.data.name + " successfully created");
+        console.log(response.data);
       })
       .catch((error) => {
-        console.log(error.response.data);
         const fieldErrors = error.response.data?.fieldErrors;
-        console.log(fieldErrors);
         if (fieldErrors.username) {
           setError("username", {
             type: "manual",

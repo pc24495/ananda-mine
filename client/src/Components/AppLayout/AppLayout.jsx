@@ -17,7 +17,6 @@ const AppLayout = ({ children }) => {
   }
 
   const appLoading = useSelector((state) => state.user.appLoading);
-  // console.log(appLoading);
 
   // useEffect(() => {
   //   dispatch(setAppLoading());

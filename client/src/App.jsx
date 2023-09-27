@@ -10,7 +10,6 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "../redux/store.js";
-import { useSelector } from "react-redux";
 import Update from "./Components/Updates/Update.jsx";
 
 export const AuthContext = createContext();
@@ -18,7 +17,6 @@ export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   //Change back to false after testing (changeback***)
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  console.log("Testinggggg");
   // Authentication logic entirely here
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -36,17 +34,20 @@ const AuthProvider = ({ children }) => {
 
 const ProtectedRoute = () => {
   const { isAuthenticated } = useContext(AuthContext);
-  const name = localStorage.getItem("name");
-  console.log("Testingggggggggggg");
-  console.log(name);
-  // const birthday = useSelector(state => state.)
+  const userString = localStorage.getItem("user");
+
+  const user = JSON.parse(userString);
+  console.log(user);
 
   if (!isAuthenticated) {
     // Redirect if not authenticated
     return <Navigate to="/" replace />;
-  } else if (!name) {
-    console.log("Redirecting to name");
+  } else if (!user.name) {
+    console.log("no name");
     return <Navigate to="/create-account/name" />;
+  } else if (!user.pic1Url || user.pic1Url === "") {
+    console.log("no pic1Url");
+    return <Navigate to="/create-account/pics" />;
   }
 
   return (

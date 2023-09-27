@@ -32,22 +32,20 @@ const Login = (props) => {
       })
       .then((response) => {
         // console.log(response.data.username + " successfully logged in");
-        // console.log(response.data);
+        console.log(response.data);
         const user = {
           name: response.data.name,
           id: response.data.id,
           username: response.data.username,
           token: response.data.token,
+          pic1Url: response.data.pic1Url,
         };
-        localStorage.setItem("name", response.data.name);
-        localStorage.setItem("user", user);
+        localStorage.setItem("user", JSON.stringify(user));
         dispatch(initialUserSetup({ ...user }));
         setIsAuthenticated(true);
       })
       .catch((error) => {
-        console.log(error.response.data);
         const fieldErrors = error.response.data?.fieldErrors;
-        console.log(fieldErrors);
         if (fieldErrors.username) {
           setError("username", {
             type: "manual",

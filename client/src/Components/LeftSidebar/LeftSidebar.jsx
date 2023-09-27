@@ -17,7 +17,6 @@ const LeftSidebar = () => {
 
   const logout = () => {
     localStorage.removeItem("user");
-    localStorage.removeItem("name");
     dispatch(logOut());
     setIsAuthenticated(false);
   };

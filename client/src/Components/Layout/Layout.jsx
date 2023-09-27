@@ -29,7 +29,6 @@ const Layout = () => {
       await axios.post("/appuser/add", {
         name: data.inputField,
       });
-      console.log("Data sent to the backend:", data);
       setName(data.inputField);
       // Reset the form if needed
     } catch (error) {

@@ -16,22 +16,18 @@ const UpdateName = () => {
   const navigate = useNavigate();
 
   const token = useSelector((state) => state.user.token);
-  const user_name = useSelector((state) => state.user.name);
-  console.log(user_name);
+  // const user_name = useSelector((state) => state.user.name);
   const onSubmit = (data) => {
-    // console.log(token);
-    // console.log(data);
     axios
       .patch("/user/name-token", { token: token, name: data.name })
       .then(async (response) => {
         dispatch(setName({ name: response.data.name }));
         localStorage.setItem("name", response.data.name);
-        // console.log("Name successfully upda/
-        navigate("/app/recs");
+        // console.log("Name successfully updated");
+        navigate("/create-account/pics");
       })
       .catch((error) => {
-        console.log("Errorr");
-        console.log(error.response.data);
+        console.log("Error", error.response.data);
         if (error.response.data?.fieldErrors?.token) {
           setError("name", {
             type: "manual",
