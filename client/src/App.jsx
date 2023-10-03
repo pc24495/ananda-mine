@@ -37,14 +37,15 @@ const ProtectedRoute = () => {
   const userString = localStorage.getItem("user");
 
   const user = JSON.parse(userString);
-  console.log(user);
 
   if (!isAuthenticated) {
     // Redirect if not authenticated
     return <Navigate to="/" replace />;
   } else if (!user.name) {
-    console.log("no name");
     return <Navigate to="/create-account/name" />;
+  } else if (!user.birthday) {
+    console.log("no birthday");
+    return <Navigate to="/create-account/birthday" />;
   } else if (!user.pic1Url || user.pic1Url === "") {
     console.log("no pic1Url");
     return <Navigate to="/create-account/pics" />;

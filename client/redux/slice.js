@@ -6,6 +6,7 @@ const initialState = {
   appLoading: false,
   counter: 0,
   name: "",
+  birthday: null,
   token: null,
   pic1Url: null,
   pic2Url: null,
@@ -25,6 +26,8 @@ const userSlice = createSlice({
       state.name = action.payload.name;
       state.loggedIn = true;
       state.token = action.payload.token;
+      state.pic1Url = action.payload.pic1Url;
+      state.birthday = action.payload.birthday;
     },
     setAppLoading: (state) => {
       state.appLoading = true;
@@ -43,6 +46,9 @@ const userSlice = createSlice({
       state.pic1Url = action.payload.pic1Url;
     },
     setPics: (state, action) => {},
+    setBirthday: (state, action) => {
+      state.birthday = action.payload.birthday;
+    },
   },
 });
 
@@ -55,5 +61,6 @@ export const {
   logOut,
   setName,
   setPic1Url,
+  setBirthday,
 } = userSlice.actions;
 export default userSlice.reducer;

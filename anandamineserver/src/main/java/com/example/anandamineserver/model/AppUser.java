@@ -2,7 +2,13 @@ package com.example.anandamineserver.model;
 import jakarta.persistence.*;
 //import javax.validation.constraints.Size;
 import jakarta.validation.constraints.Size;
+import java.time.LocalDate;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
+enum Gender {
+    MALE, FEMALE, NON_BINARY
+}
 @Entity
 public class AppUser {
 
@@ -37,6 +43,13 @@ public class AppUser {
     @Size(max = 2000)
     @Column(name = "pic6url", length = 2000)
     private String pic6Url;
+
+    @Column(name = "birthday")
+    private LocalDate birthday;
+
+    @Column(name = "bio")
+    @Size(max = 500)
+    private String bio;
 
     public String getPic1Url() {
         return pic1Url;
@@ -122,5 +135,21 @@ public class AppUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public LocalDate getBirthday() {
+        return this.birthday;
+    }
+
+    public void setBirthday(LocalDate birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getBio() {
+        return this.bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
     }
 }

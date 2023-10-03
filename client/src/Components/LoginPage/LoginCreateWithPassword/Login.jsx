@@ -39,6 +39,7 @@ const Login = (props) => {
           username: response.data.username,
           token: response.data.token,
           pic1Url: response.data.pic1Url,
+          birthday: response.data.birthday,
         };
         localStorage.setItem("user", JSON.stringify(user));
         dispatch(initialUserSetup({ ...user }));

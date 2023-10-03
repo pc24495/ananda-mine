@@ -1,5 +1,7 @@
 package com.example.anandamineserver.controller;
+import com.amazonaws.services.xray.model.Http;
 import com.example.anandamineserver.JwtUtil;
+import com.example.anandamineserver.dto.PatchBirthdayTokenRequest;
 import com.example.anandamineserver.dto.PatchNameTokenRequest;
 import com.example.anandamineserver.service.S3Service;
 import org.postgresql.util.PSQLException;
@@ -7,23 +9,22 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import com.example.anandamineserver.model.AppUser;
 import com.example.anandamineserver.service.AppUserService;
 import com.example.anandamineserver.service.S3Service;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
-
 import com.example.anandamineserver.dto.LoginUsernamePasswordRequest;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/user")
@@ -155,6 +156,7 @@ public class AppUserController {
         response.put("pic4Url", appUser.getPic4Url());
         response.put("pic5Url", appUser.getPic5Url());
         response.put("pic6Url", appUser.getPic6Url());
+        response.put("birthday", appUser.getBirthday());
         response.put("token", token);
 
         return new ResponseEntity<>(response, HttpStatus.OK);
@@ -250,6 +252,37 @@ public class AppUserController {
         response.put("message", "Successfully uploaded pics");
         System.out.println("Pics Patch Token Route Over");
 
+        return ResponseEntity.ok(response);
+    }
+
+    @PatchMapping(value = "/birthday-token")
+    public ResponseEntity<Map<String, Object>> changeBirthdayToken(@RequestBody PatchBirthdayTokenRequest patchBirthdayRequest) {
+        Map<String, Object> response = new HashMap<>();
+        Map<String, Object> fieldErrors = new HashMap<>();
+        String token = patchBirthdayRequest.getToken();
+        if(token == null) {
+            fieldErrors.put("token", "Token invalid");
+            response.put("fieldErrors", fieldErrors);
+            System.out.println("/birthday-token PATCH Request: Token invalid");
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+        int userID = jwtUtil.getUserIdFromToken(token, SECRET);
+        AppUser appUser = appUserService.findById(userID);
+        LocalDate birthday;
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+            System.out.println(patchBirthdayRequest.getBirthday());
+            birthday = LocalDate.parse(patchBirthdayRequest.getBirthday(), formatter);
+        } catch (DateTimeParseException e) {
+            fieldErrors.put("birthday", "Invalid date format");
+            response.put("fieldErrors", fieldErrors);
+            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+        }
+        appUser.setBirthday(birthday);
+        appUserService.saveAppUser(appUser);
+        response.put("message", "Successfully updated birthday");
+        String formattedBirthday = birthday.format(DateTimeFormatter.ofPattern("MM/dd/yyyy"));  // Format LocalDate to String
+        response.put("birthday", formattedBirthday);  // Add formatted birthday to response
         return ResponseEntity.ok(response);
     }
 
